@@ -5,6 +5,12 @@ async function get (obj){
   let sql = `SELECT currency, sum(amount)as total FROM payments p group by currency`
   return await query.execute(sql)
 }
+async function getWithdrawal (obj){
+  let sql = `SELECT currency, sum(amount)as total FROM withdrawal p group by currency`
+  return await query.execute(sql)
+}
+
+
 async function getTransationsPayments (obj){
   let sql = `SELECT * FROM payments p`
   return await query.execute(sql)
@@ -18,5 +24,6 @@ async function getTransationsWithdrawal (obj){
 module.exports = {
   get,
   getTransationsPayments,
-  getTransationsWithdrawal
+  getTransationsWithdrawal,
+  getWithdrawal
 }
